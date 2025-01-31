@@ -17,13 +17,32 @@ services:
     networks:
       - f1_network
 
+  hub:
+    container_name: f1_hub
+    build:
+      context: ./hub
+      dockerfile: Dockerfile
+    ports:
+      - "9010:5000"
+    volumes:
+      - ./hub/src:/app/src
+      - /app/bin
+      - /app/obj
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=f1_postgres;Database=f1_database;Username=f1_sgcan;Password=f1_sgcan123456
+    depends_on:
+      - postgres
+    networks:
+      - f1_network
+
   scraper:
     container_name: f1_scraper
     build:
       context: ./scraper
       dockerfile: Dockerfile
     ports:
-      - "9020:9020"
+      - "9020:8000"
     volumes:
       - ./scraper:/app
     depends_on:

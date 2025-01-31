@@ -83,7 +83,7 @@ solution
 ```
 
 ## Puertos
-```
+```plaintext
 | Servicio  | Puerto |
 |-----------|--------|
 | frontend  | 9999   |
@@ -93,3 +93,20 @@ solution
 | postgres  | 9040   |
 | redis     | 9050   |
 ```
+
+## Endpoints Principales
+
+**Hub API**
+- `POST /register`: Registro de usuarios.
+- `POST /upload`: Subida de archivos CSV.
+- `GET /files`: Listado de archivos subidos por el usuario.
+- `GET /files/{file_id}/links`: Listado de links procesados.
+
+- Opcional: `POST /login`: Inicio de sesión y obtención de JWT.
+
+**Servicio de Scrapeo**
+- `POST /process`: Procesar un archivo.
+
+**Servicio de Notificaciones**
+- `POST /notify`: Enviar notificación de finalización.
+
