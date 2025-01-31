@@ -20,6 +20,13 @@ El objetivo de esta tarea es implementar un sistema basado en microservicios par
 6. **Backend**: Utilizar arquitectura de microservicios, cada servicio debe utilizar una tecnología diferente, incluyendo **.NET Core**, **Python** y **Node**.
 7. **Despliegue**: Toda la solución debe ser desplegable mediante Docker, con un único archivo `docker-compose.yml`.
 
+## Evaluación
+
+- Se evaluará el uso de Clean Code, optimización y uso de buenas practicas de código.
+- Se evaluará el uso de Redis en la solución.
+- Se valorará el uso de pruebas unitarias.
+- Se valorará el uso patrones de diseño.
+
 ## Requisitos Técnicos
 
 1. **Frontend**: 
