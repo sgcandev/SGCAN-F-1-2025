@@ -86,7 +86,7 @@ solution
 ```
 | Servicio  | Puerto |
 |-----------|--------|
-| frontend  | 9000   |
+| frontend  | 9999   |
 | hub       | 9010   |
 | scraper   | 9020   |
 | notifier  | 9030   |

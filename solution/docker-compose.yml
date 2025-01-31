@@ -1,11 +1,12 @@
 services:
 
   react:
+    container_name: f1_react
     build:
       context: ./react
       dockerfile: Dockerfile
     ports:
-      - "9000:3000"
+      - "9999:3000"
     volumes:
       - ./react:/app
       - /app/node_modules
