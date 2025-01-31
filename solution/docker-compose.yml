@@ -1,0 +1,61 @@
+services:
+
+  react:
+    build:
+      context: ./react
+      dockerfile: Dockerfile
+    ports:
+      - "9000:3000"
+    volumes:
+      - ./react:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - NODE_ENV=development
+    command: sh -c "pnpm install && pnpm dev"
+    networks:
+      - f1_network
+
+  scraper:
+    container_name: f1_scraper
+    build:
+      context: ./scraper
+      dockerfile: Dockerfile
+    ports:
+      - "9020:9020"
+    volumes:
+      - ./scraper:/app
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - f1_network
+
+  postgres:
+    image: postgres:14
+    container_name: f1_postgres
+    hostname: f1_postgres
+    volumes:
+      - ./volumes/postgres_data:/var/lib/postgresql/data
+    env_file:
+      - ./envs/.env.postgres
+    networks:
+      - f1_network
+    ports:
+      - "9040:5432"
+    restart: "always"
+
+  redis:
+    image: redis:6.2-alpine
+    container_name: f1_redis
+    hostname: f1_redis
+    ports:
+      - "9050:6379"
+    networks:
+      - f1_network
+    restart: "always"
+
+networks:
+  f1_network:
+    name: f1_network
+    driver: bridge
