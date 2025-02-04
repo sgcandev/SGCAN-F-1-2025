@@ -3,12 +3,12 @@ services:
   react:
     container_name: f1_react
     build:
-      context: ./react
+      context: ./frontend
       dockerfile: Dockerfile
     ports:
       - "9999:3000"
     volumes:
-      - ./react:/app
+      - ./frontend:/app
       - /app/node_modules
       - /app/.next
     environment:
